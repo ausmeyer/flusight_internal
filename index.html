@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://cdn.jsdelivr.net; script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline'; style-src 'self' 'unsafe-inline';">
+    <title>Flu Forecast Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+		<div class="sidebar">
+			<h3>Forecast Controls</h3>
+			<div class="control-group">
+				<label>Submission Week:</label>
+				<select id="dateSelector"></select>
+			</div>
+			<div class="control-group">
+				<div class="checkbox-group">
+					<input type="checkbox" id="retrospective" name="timeRange">
+					<label for="retrospective">Include Retrospective</label>
+				</div>
+			</div>
+			<div class="control-group">
+				<label>Models:</label>
+				<div id="modelCheckboxes"></div>
+			</div>
+		</div>
+        <div class="main-content">
+            <h1>Influenza Hospitalization Forecasts</h1>
+            <div id="us-chart"></div>
+        </div>
+    </div>
+
+    <!-- Primary CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    
+    <!-- Fallback for D3.js -->
+    <script>
+        if (typeof d3 === 'undefined') {
+            console.warn('CDN D3 failed to load, attempting local fallback');
+            document.write('<script src="lib/d3.v7.min.js"><\/script>');
+        }
+    </script>
+
+    <!-- Application Scripts -->
+	<script src="js/dataLoader.js"></script>
+	<script src="js/chart.js"></script>
+	<script src="js/main.js"></script>
+</body>
+</html>
